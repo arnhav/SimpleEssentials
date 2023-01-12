@@ -1,0 +1,30 @@
+name: SimpleEssentials
+version: '${project.version}'
+main: com.github.arnhav.simpleessentials.SimpleEssentials
+api-version: 1.18
+authors: [ Tyrriel ]
+commands:
+  warp:
+    usage: /<command>
+  setwarp:
+    usage: /<command>
+  remwarp:
+    usage: /<command>
+  back:
+    usage: /<command>
+  gamemode:
+    usage: /<command>
+  gm0:
+    usage: /<command>
+  gm1:
+    usage: /<command>
+  gm2:
+    usage: /<command>
+  gm3:
+    usage: /<command>
+  fix:
+    usage: /<command>
+  heal:
+    usage: /<command>
+  speed:
+    usage: /<command>
