@@ -23,7 +23,8 @@ public class Speed extends CommandExecutor {
             double speed = Double.parseDouble(args[0]);
             if (speed > 10) return false;
             value = speed / 10;
-        } catch (NumberFormatException ignored) {}
+        } catch (NumberFormatException ignored) {
+        }
         if (p.isFlying()) {
             p.setFlySpeed((float) value);
             p.sendMessage(ChatColor.GRAY + "Fly speed set to " + args[0]);

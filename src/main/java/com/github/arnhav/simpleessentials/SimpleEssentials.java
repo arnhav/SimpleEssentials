@@ -1,6 +1,9 @@
 package com.github.arnhav.simpleessentials;
 
-import com.github.arnhav.simpleessentials.commands.*;
+import com.github.arnhav.simpleessentials.commands.Back;
+import com.github.arnhav.simpleessentials.commands.Fix;
+import com.github.arnhav.simpleessentials.commands.Heal;
+import com.github.arnhav.simpleessentials.commands.Speed;
 import com.github.arnhav.simpleessentials.commands.gamemode.*;
 import com.github.arnhav.simpleessentials.commands.warp.RemWarp;
 import com.github.arnhav.simpleessentials.commands.warp.SetWarp;
