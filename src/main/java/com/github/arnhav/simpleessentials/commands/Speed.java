@@ -1,6 +1,7 @@
 package com.github.arnhav.simpleessentials.commands;
 
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -25,8 +26,10 @@ public class Speed extends CommandExecutor {
         } catch (NumberFormatException ignored) {}
         if (p.isFlying()) {
             p.setFlySpeed((float) value);
+            p.sendMessage(ChatColor.GRAY + "Fly speed set to " + args[0]);
         } else {
             p.setWalkSpeed((float) value);
+            p.sendMessage(ChatColor.GRAY + "Walk speed set to " + args[0]);
         }
         return true;
     }

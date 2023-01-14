@@ -2,6 +2,7 @@ package com.github.arnhav.simpleessentials.commands;
 
 import com.github.arnhav.simpleessentials.util.BackUtil;
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
+import io.papermc.lib.PaperLib;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -25,7 +26,7 @@ public class Back extends CommandExecutor {
             p.sendMessage(ChatColor.RED + "No location to go back to!");
             return true;
         }
-        p.teleport(l, PlayerTeleportEvent.TeleportCause.PLUGIN);
+        PaperLib.teleportAsync(p, l, PlayerTeleportEvent.TeleportCause.PLUGIN);
         return true;
     }
 

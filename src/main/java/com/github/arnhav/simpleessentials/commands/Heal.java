@@ -1,6 +1,7 @@
 package com.github.arnhav.simpleessentials.commands;
 
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
+import org.bukkit.ChatColor;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.command.Command;
@@ -27,6 +28,7 @@ public class Heal extends CommandExecutor {
         for (PotionEffect potionEffect : p.getActivePotionEffects()) {
             p.removePotionEffect(potionEffect.getType());
         }
+        p.sendMessage(ChatColor.GRAY + "You have been healed!");
         return true;
     }
 

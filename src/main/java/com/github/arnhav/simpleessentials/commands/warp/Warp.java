@@ -2,6 +2,7 @@ package com.github.arnhav.simpleessentials.commands.warp;
 
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
 import com.github.arnhav.simpleessentials.util.WarpUtil;
+import io.papermc.lib.PaperLib;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -45,7 +46,7 @@ public class Warp extends CommandExecutor {
                 p.sendMessage(ChatColor.RED + "Invalid player: " + args[1]);
                 return true;
             }
-            player.teleport(warp, PlayerTeleportEvent.TeleportCause.PLUGIN);
+            PaperLib.teleportAsync(player, warp, PlayerTeleportEvent.TeleportCause.PLUGIN);
         }
         return true;
     }

@@ -12,7 +12,7 @@ commands:
     usage: /<command>
   back:
     usage: /<command>
-  gamemode:
+  gm:
     usage: /<command>
   gm0:
     usage: /<command>

@@ -29,12 +29,14 @@ public class Fix extends CommandExecutor {
                 o[i] = fixItem(t.clone());
             }
             p.getInventory().setContents(o);
+            p.sendMessage(ChatColor.GRAY + "All damaged items in your inventory have been fixed!");
         } else {
             ItemStack itemStack = p.getInventory().getItemInMainHand();
             if (itemStack.getType().isAir()) {
                 p.sendMessage(ChatColor.RED + "Invalid item!");
             }
             p.getInventory().setItemInMainHand(fixItem(itemStack));
+            p.sendMessage(ChatColor.GRAY + "Fixed held item!");
         }
         return true;
     }
