@@ -13,7 +13,9 @@ public abstract class CommandExecutor implements org.bukkit.command.CommandExecu
         String permissionString = "simpleessentials." + command.toLowerCase();
         c.setPermission(permissionString);
         Permission permission = new Permission(permissionString);
-        SimpleEssentials.instance().getServer().getPluginManager().addPermission(permission);
+        if (SimpleEssentials.instance().getServer().getPluginManager().getPermission(permissionString) == null) {
+            SimpleEssentials.instance().getServer().getPluginManager().addPermission(permission);
+        }
         c.setExecutor(this);
         c.setTabCompleter(this);
     }
