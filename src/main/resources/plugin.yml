@@ -22,6 +22,14 @@ commands:
     usage: /<command>
   gm3:
     usage: /<command>
+  gms:
+    usage: /<command>
+  gmc:
+    usage: /<command>
+  gma:
+    usage: /<command>
+  gmsp:
+    usage: /<command>
   fix:
     usage: /<command>
   heal:

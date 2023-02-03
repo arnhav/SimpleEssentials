@@ -10,8 +10,6 @@ import com.github.arnhav.simpleessentials.commands.warp.SetWarp;
 import com.github.arnhav.simpleessentials.commands.warp.Warp;
 import com.github.arnhav.simpleessentials.data.FileManager;
 import com.github.arnhav.simpleessentials.listeners.BackListener;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SimpleEssentials extends JavaPlugin {
@@ -30,9 +28,13 @@ public final class SimpleEssentials extends JavaPlugin {
 
         new Gamemode("gm");
         new GM0("gm0");
+        new GM0("gms");
         new GM1("gm1");
+        new GM1("gmc");
         new GM2("gm2");
+        new GM2("gma");
         new GM3("gm3");
+        new GM3("gmsp");
 
         new Fix("fix");
         new Heal("heal");
