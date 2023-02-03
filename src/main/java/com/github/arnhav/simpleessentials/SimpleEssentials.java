@@ -29,7 +29,7 @@ public final class SimpleEssentials extends JavaPlugin {
         new SetWarp("setwarp");
         new RemWarp("remwarp", fileManager.getWarpManager());
 
-        new Back("back");
+        new Back("back", backManager);
 
         new Gamemode("gm");
         new GM0("gm0");

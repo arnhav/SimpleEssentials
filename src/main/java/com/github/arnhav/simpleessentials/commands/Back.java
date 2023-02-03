@@ -13,14 +13,18 @@ import java.util.List;
 
 public class Back extends CommandExecutor {
 
-    public Back(String command) {
+    BackManager backManager;
+
+    public Back(String command, BackManager backManager) {
         super(command);
+
+        this.backManager = backManager;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player p)) return false;
-        Location l = BackManager.lastLocation.get(p);
+        Location l = backManager.getLastLocation().get(p);
         if (l == null) {
             p.sendMessage(ChatColor.RED + "No location to go back to!");
             return true;
