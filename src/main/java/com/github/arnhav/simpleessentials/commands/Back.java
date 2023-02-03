@@ -1,7 +1,7 @@
 package com.github.arnhav.simpleessentials.commands;
 
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
-import com.github.arnhav.simpleessentials.util.BackUtil;
+import com.github.arnhav.simpleessentials.managers.BackManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -20,7 +20,7 @@ public class Back extends CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player p)) return false;
-        Location l = BackUtil.lastLocation.get(p);
+        Location l = BackManager.lastLocation.get(p);
         if (l == null) {
             p.sendMessage(ChatColor.RED + "No location to go back to!");
             return true;

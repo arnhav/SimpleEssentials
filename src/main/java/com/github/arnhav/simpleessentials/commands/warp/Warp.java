@@ -1,7 +1,7 @@
 package com.github.arnhav.simpleessentials.commands.warp;
 
+import com.github.arnhav.simpleessentials.data.WarpManager;
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
-import com.github.arnhav.simpleessentials.util.WarpUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -17,12 +17,16 @@ import java.util.stream.Collectors;
 
 public class Warp extends CommandExecutor {
 
+    WarpManager warpManager;
+
     List<String> warps;
 
-    public Warp(String command) {
+    public Warp(String command, WarpManager warpManager) {
         super(command);
 
-        warps = new ArrayList<>(WarpUtil.warps.keySet());
+        this.warpManager = warpManager;
+
+        warps = new ArrayList<>(warpManager.getWarps().keySet());
     }
 
     @Override
@@ -30,7 +34,7 @@ public class Warp extends CommandExecutor {
         if (!(sender instanceof Player p)) return false;
         if (args.length == 0) return true;
         String name = args[0];
-        Location warp = WarpUtil.warps.get(name);
+        Location warp = warpManager.getWarps().get(name);
         if (warp == null) {
             p.sendMessage(ChatColor.RED + "No warp with that name!");
             return true;

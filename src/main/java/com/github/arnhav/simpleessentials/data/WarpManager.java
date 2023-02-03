@@ -1,6 +1,6 @@
 package com.github.arnhav.simpleessentials.data;
 
-import com.github.arnhav.simpleessentials.util.WarpUtil;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -11,10 +11,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
+@Getter
 public class WarpManager {
 
-    private static FileConfiguration data;
+    private final Map<String, Location> warps = new HashMap<>();
 
     private static File warpsFolder;
 
@@ -29,7 +32,7 @@ public class WarpManager {
 
     private void loadWarps(File[] files) {
         for (File file : files) {
-            data = YamlConfiguration.loadConfiguration(file);
+            FileConfiguration data = YamlConfiguration.loadConfiguration(file);
 
             String worldName = data.getString("world");
             if (worldName == null) continue;
@@ -44,7 +47,7 @@ public class WarpManager {
             String name = data.getString("name");
 
             Location location = new Location(world, x, y, z, (float) yaw, (float) pitch);
-            WarpUtil.warps.put(name, location);
+            warps.put(name, location);
         }
     }
 
@@ -52,7 +55,7 @@ public class WarpManager {
         if (location == null) return;
         name = name.replace(" ", "_");
         File file = new File(warpsFolder, name + ".yml");
-        data = YamlConfiguration.loadConfiguration(file);
+        FileConfiguration data = YamlConfiguration.loadConfiguration(file);
         data.set("world", location.getWorld().getName());
         data.set("x", location.getX());
         data.set("y", location.getY());

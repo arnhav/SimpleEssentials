@@ -10,19 +10,24 @@ import com.github.arnhav.simpleessentials.commands.warp.SetWarp;
 import com.github.arnhav.simpleessentials.commands.warp.Warp;
 import com.github.arnhav.simpleessentials.data.FileManager;
 import com.github.arnhav.simpleessentials.listeners.BackListener;
+import com.github.arnhav.simpleessentials.managers.BackManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SimpleEssentials extends JavaPlugin {
 
+    FileManager fileManager;
+    BackManager backManager;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
-        new FileManager(this);
+        fileManager = new FileManager(this);
+        backManager = new BackManager();
 
         // Commands
-        new Warp("warp");
+        new Warp("warp", fileManager.getWarpManager());
         new SetWarp("setwarp");
-        new RemWarp("remwarp");
+        new RemWarp("remwarp", fileManager.getWarpManager());
 
         new Back("back");
 
@@ -41,7 +46,7 @@ public final class SimpleEssentials extends JavaPlugin {
         new Speed("speed");
 
         // Listeners
-        new BackListener();
+        new BackListener(backManager);
     }
 
     @Override

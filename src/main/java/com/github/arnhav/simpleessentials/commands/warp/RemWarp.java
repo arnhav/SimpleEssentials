@@ -2,7 +2,6 @@ package com.github.arnhav.simpleessentials.commands.warp;
 
 import com.github.arnhav.simpleessentials.data.WarpManager;
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
-import com.github.arnhav.simpleessentials.util.WarpUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
@@ -12,20 +11,24 @@ import java.util.stream.Collectors;
 
 public class RemWarp extends CommandExecutor {
 
+    WarpManager warpManager;
+
     List<String> warps;
 
-    public RemWarp(String command) {
+    public RemWarp(String command, WarpManager warpManager) {
         super(command);
 
-        warps = new ArrayList<>(WarpUtil.warps.keySet());
+        this.warpManager = warpManager;
+
+        warps = new ArrayList<>(warpManager.getWarps().keySet());
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) return true;
         String name = args[0];
-        if (!WarpUtil.warps.containsKey(name)) return true;
-        WarpManager.removeWarp(name);
+        if (!warpManager.getWarps().containsKey(name)) return true;
+        com.github.arnhav.simpleessentials.data.WarpManager.removeWarp(name);
         return true;
     }
 
