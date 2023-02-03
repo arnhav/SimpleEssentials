@@ -9,16 +9,19 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class Heal extends CommandExecutor {
-    public Heal(String command) {
+public class Feed extends CommandExecutor {
+
+    public Feed(String command) {
         super(command);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         Player p;
         if (args.length == 1) {
             p = Bukkit.getPlayerExact(args[0]);
@@ -27,21 +30,14 @@ public class Heal extends CommandExecutor {
             p = (Player) sender;
         }
         if (p == null) return true;
-        AttributeInstance ai = p.getAttribute(Attribute.GENERIC_MAX_HEALTH);
-        if (ai != null) {
-            p.setHealth(ai.getValue());
-        }
         p.setFoodLevel(20);
         p.setSaturation(20);
-        for (PotionEffect potionEffect : p.getActivePotionEffects()) {
-            p.removePotionEffect(potionEffect.getType());
-        }
-        p.sendMessage(ChatColor.GRAY + p.getName() + " has been healed!");
+        p.sendMessage(ChatColor.GRAY + p.getName() + " has been fed!");
         return true;
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         return null;
     }
 }
