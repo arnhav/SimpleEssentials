@@ -1,5 +1,6 @@
 package com.github.arnhav.simpleessentials.data;
 
+import com.github.arnhav.simpleessentials.SimpleEssentials;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -36,6 +37,10 @@ public class WarpManager {
 
             String worldName = data.getString("world");
             if (worldName == null) continue;
+            if (Bukkit.getWorld(worldName) == null) {
+                SimpleEssentials.instance().getLogger().warning(file.getName() + " is an invalid warp!");
+                continue;
+            }
             World world = Bukkit.createWorld(new WorldCreator(worldName));
 
             double x = data.getDouble("x");
