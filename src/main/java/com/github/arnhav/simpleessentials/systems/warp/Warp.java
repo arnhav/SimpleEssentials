@@ -1,6 +1,5 @@
-package com.github.arnhav.simpleessentials.commands.warp;
+package com.github.arnhav.simpleessentials.systems.warp;
 
-import com.github.arnhav.simpleessentials.data.WarpManager;
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

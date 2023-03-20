@@ -1,4 +1,4 @@
-package com.github.arnhav.simpleessentials.commands;
+package com.github.arnhav.simpleessentials.systems.speed;
 
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
 import org.bukkit.ChatColor;
@@ -18,13 +18,14 @@ public class Speed extends CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player p)) return false;
         if (args.length == 0) return false;
-        double value = 0.2;
+        double value = 0;
         try {
             double speed = Double.parseDouble(args[0]);
             if (speed > 10) return false;
             value = speed / 10;
         } catch (NumberFormatException ignored) {
         }
+        value += 0.2;
         if (p.isFlying()) {
             p.setFlySpeed((float) value);
             p.sendMessage(ChatColor.GRAY + "Fly speed set to " + args[0]);

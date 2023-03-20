@@ -1,7 +1,6 @@
-package com.github.arnhav.simpleessentials.listeners;
+package com.github.arnhav.simpleessentials.systems.back;
 
 import com.github.arnhav.simpleessentials.objects.Listener;
-import com.github.arnhav.simpleessentials.managers.BackManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;

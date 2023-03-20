@@ -1,4 +1,4 @@
-package com.github.arnhav.simpleessentials.commands;
+package com.github.arnhav.simpleessentials.systems.fix;
 
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
 import org.bukkit.ChatColor;

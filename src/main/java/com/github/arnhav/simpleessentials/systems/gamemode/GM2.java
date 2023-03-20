@@ -1,7 +1,8 @@
-package com.github.arnhav.simpleessentials.commands.gamemode;
+package com.github.arnhav.simpleessentials.systems.gamemode;
 
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
 import org.apache.commons.lang.WordUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
@@ -10,15 +11,22 @@ import org.bukkit.entity.Player;
 
 import java.util.List;
 
-public class GM0 extends CommandExecutor {
-    public GM0(String command) {
+public class GM2 extends CommandExecutor {
+    public GM2(String command) {
         super(command);
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player p)) return false;
-        GameMode gameMode = GameMode.SURVIVAL;
+        Player p;
+        if (args.length == 1) {
+            p = Bukkit.getPlayerExact(args[0]);
+        } else {
+            if (!(sender instanceof Player)) return false;
+            p = (Player) sender;
+        }
+        if (p == null) return true;
+        GameMode gameMode = GameMode.ADVENTURE;
         p.setGameMode(gameMode);
         p.sendMessage(ChatColor.GRAY + "Changed gamemode to: " + WordUtils.capitalize(gameMode.toString()));
         return true;

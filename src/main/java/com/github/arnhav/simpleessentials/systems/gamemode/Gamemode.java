@@ -1,7 +1,8 @@
-package com.github.arnhav.simpleessentials.commands.gamemode;
+package com.github.arnhav.simpleessentials.systems.gamemode;
 
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
 import org.apache.commons.lang.WordUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
@@ -21,8 +22,15 @@ public class Gamemode extends CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player p)) return false;
         if (args.length == 0) return false;
+        Player p;
+        if (args.length == 1) {
+            p = Bukkit.getPlayerExact(args[0]);
+        } else {
+            if (!(sender instanceof Player)) return false;
+            p = (Player) sender;
+        }
+        if (p == null) return true;
         GameMode gameMode = null;
         if (args[0].equals("0") || args[0].equalsIgnoreCase("s") || args[0].equalsIgnoreCase("survival")) {
             gameMode = GameMode.SURVIVAL;

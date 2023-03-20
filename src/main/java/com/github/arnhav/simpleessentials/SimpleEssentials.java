@@ -1,58 +1,46 @@
 package com.github.arnhav.simpleessentials;
 
-import com.github.arnhav.simpleessentials.commands.*;
-import com.github.arnhav.simpleessentials.commands.gamemode.*;
-import com.github.arnhav.simpleessentials.commands.warp.RemWarp;
-import com.github.arnhav.simpleessentials.commands.warp.SetWarp;
-import com.github.arnhav.simpleessentials.commands.warp.Warp;
-import com.github.arnhav.simpleessentials.data.FileManager;
-import com.github.arnhav.simpleessentials.listeners.BackListener;
-import com.github.arnhav.simpleessentials.managers.BackManager;
+import com.github.arnhav.simpleessentials.objects.System;
+import com.github.arnhav.simpleessentials.systems.back.BackSystem;
+import com.github.arnhav.simpleessentials.systems.feed.FeedSystem;
+import com.github.arnhav.simpleessentials.systems.fix.FixSystem;
+import com.github.arnhav.simpleessentials.systems.gamemode.GamemodeSystem;
+import com.github.arnhav.simpleessentials.systems.heal.HealSystem;
+import com.github.arnhav.simpleessentials.systems.speed.SpeedSystem;
+import com.github.arnhav.simpleessentials.systems.warp.WarpSystem;
+import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashSet;
+import java.util.Set;
+
+@Getter
 public final class SimpleEssentials extends JavaPlugin {
 
-    FileManager fileManager;
-    BackManager backManager;
+    Set<System> systems = new HashSet<>();
 
     @Override
     public void onEnable() {
         // Plugin startup logic
-        fileManager = new FileManager(this);
-        backManager = new BackManager();
 
-        // Commands
-        new Warp("warp", fileManager.getWarpManager());
-        new SetWarp("setwarp");
-        new RemWarp("remwarp", fileManager.getWarpManager());
+        new WarpSystem();
+        new BackSystem();
+        new GamemodeSystem();
+        new SpeedSystem();
+        new FeedSystem();
+        new FixSystem();
+        new HealSystem();
 
-        new Back("back", backManager);
-
-        new Gamemode("gm");
-        new GM0("gm0");
-        new GM0("gms");
-        new GM1("gm1");
-        new GM1("gmc");
-        new GM2("gm2");
-        new GM2("gma");
-        new GM3("gm3");
-        new GM3("gmsp");
-
-        new Fix("fix");
-        new Heal("heal");
-        new Feed("feed");
-        new Speed("speed");
-
-        // Listeners
-        new BackListener(backManager);
+        systems.forEach(System::enable);
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        systems.forEach(System::disable);
     }
 
-    public static JavaPlugin instance() {
-        return SimpleEssentials.getProvidingPlugin(SimpleEssentials.class);
+    public static SimpleEssentials instance() {
+        return SimpleEssentials.getPlugin(SimpleEssentials.class);
     }
 }

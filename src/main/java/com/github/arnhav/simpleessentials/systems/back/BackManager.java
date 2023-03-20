@@ -1,4 +1,4 @@
-package com.github.arnhav.simpleessentials.managers;
+package com.github.arnhav.simpleessentials.systems.back;
 
 import lombok.Data;
 import org.bukkit.Location;

@@ -1,4 +1,4 @@
-package com.github.arnhav.simpleessentials.data;
+package com.github.arnhav.simpleessentials.systems.warp;
 
 import com.github.arnhav.simpleessentials.SimpleEssentials;
 import lombok.Getter;
@@ -56,7 +56,7 @@ public class WarpManager {
         }
     }
 
-    public static void saveWarp(String name, Location location) {
+    public void saveWarp(String name, Location location) {
         if (location == null) return;
         name = name.replace(" ", "_");
         File file = new File(warpsFolder, name + ".yml");
@@ -73,12 +73,14 @@ public class WarpManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        warps.put(name, location);
     }
 
-    public static void removeWarp(String name) {
+    public void removeWarp(String name) {
         File file = new File(warpsFolder, name + ".yml");
         if (!file.exists()) return;
         file.delete();
+        warps.remove(name);
     }
 
 }

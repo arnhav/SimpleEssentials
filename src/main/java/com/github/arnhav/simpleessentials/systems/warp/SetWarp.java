@@ -1,26 +1,31 @@
-package com.github.arnhav.simpleessentials.commands.gamemode;
+package com.github.arnhav.simpleessentials.systems.warp;
 
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
-import org.apache.commons.lang.WordUtils;
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.List;
 
-public class GM2 extends CommandExecutor {
-    public GM2(String command) {
+public class SetWarp extends CommandExecutor {
+
+    WarpManager warpManager;
+
+    public SetWarp(String command, WarpManager warpManager) {
         super(command);
+
+        this.warpManager = warpManager;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player p)) return false;
-        GameMode gameMode = GameMode.ADVENTURE;
-        p.setGameMode(gameMode);
-        p.sendMessage(ChatColor.GRAY + "Changed gamemode to: " + WordUtils.capitalize(gameMode.toString()));
+        if (args.length == 0) return true;
+        String name = args[0];
+        warpManager.saveWarp(name, p.getLocation());
+        p.sendMessage(Component.text("Created warp: " + name, NamedTextColor.GREEN));
         return true;
     }
 

@@ -1,7 +1,8 @@
-package com.github.arnhav.simpleessentials.commands.warp;
+package com.github.arnhav.simpleessentials.systems.warp;
 
-import com.github.arnhav.simpleessentials.data.WarpManager;
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
@@ -28,7 +29,8 @@ public class RemWarp extends CommandExecutor {
         if (args.length == 0) return true;
         String name = args[0];
         if (!warpManager.getWarps().containsKey(name)) return true;
-        com.github.arnhav.simpleessentials.data.WarpManager.removeWarp(name);
+        warpManager.removeWarp(name);
+        sender.sendMessage(Component.text("Removed warp: " + name, NamedTextColor.YELLOW));
         return true;
     }
 

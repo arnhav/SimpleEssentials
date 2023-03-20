@@ -1,7 +1,6 @@
-package com.github.arnhav.simpleessentials.commands;
+package com.github.arnhav.simpleessentials.systems.back;
 
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
-import com.github.arnhav.simpleessentials.managers.BackManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;

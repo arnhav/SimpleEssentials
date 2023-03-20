@@ -1,14 +1,11 @@
-package com.github.arnhav.simpleessentials.commands;
+package com.github.arnhav.simpleessentials.systems.feed;
 
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.attribute.Attribute;
-import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
