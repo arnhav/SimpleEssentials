@@ -3,6 +3,8 @@ version: '${project.version}'
 main: com.github.arnhav.simpleessentials.SimpleEssentials
 api-version: 1.18
 authors: [ Tyrriel ]
+load: POSTWORLD
+softdepend: [Multiverse-Core]
 commands:
   warp:
     usage: /<command>
