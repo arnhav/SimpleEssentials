@@ -1,7 +1,7 @@
 package com.github.arnhav.simpleessentials.systems.gamemode;
 
 import com.github.arnhav.simpleessentials.objects.CommandExecutor;
-import org.apache.commons.lang.WordUtils;
+import org.apache.commons.lang3.text.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
