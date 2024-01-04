@@ -6,6 +6,7 @@ import com.github.arnhav.simpleessentials.systems.feed.FeedSystem;
 import com.github.arnhav.simpleessentials.systems.fix.FixSystem;
 import com.github.arnhav.simpleessentials.systems.gamemode.GamemodeSystem;
 import com.github.arnhav.simpleessentials.systems.heal.HealSystem;
+import com.github.arnhav.simpleessentials.systems.message.MessageSystem;
 import com.github.arnhav.simpleessentials.systems.speed.SpeedSystem;
 import com.github.arnhav.simpleessentials.systems.warp.WarpSystem;
 import lombok.Getter;
@@ -30,6 +31,7 @@ public final class SimpleEssentials extends JavaPlugin {
         new FeedSystem();
         new FixSystem();
         new HealSystem();
+        new MessageSystem();
 
         systems.forEach(System::enable);
     }
