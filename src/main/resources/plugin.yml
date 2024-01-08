@@ -40,7 +40,5 @@ commands:
     usage: /<command>
   speed:
     usage: /<command>
-  msg:
-    usage: /<command>
   r:
     usage: /<command>

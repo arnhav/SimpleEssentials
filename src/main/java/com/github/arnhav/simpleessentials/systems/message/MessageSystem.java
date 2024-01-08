@@ -6,8 +6,10 @@ public class MessageSystem extends System {
     @Override
     public void enable() {
         MessageManager messageManager = new MessageManager();
-        new MessageCommand("msg", messageManager);
+
         new ReplyCommand("r", messageManager);
+
+        new MessageListener(messageManager);
     }
 
     @Override
