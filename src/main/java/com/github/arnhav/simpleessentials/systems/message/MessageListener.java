@@ -26,16 +26,16 @@ public class MessageListener extends Listener {
         if (!command.startsWith("/")) return;
         if (!(command.startsWith("/msg ") || command.startsWith("/w "))) return;
 
+        event.setCancelled(true);
+
         Player sender = event.getPlayer();
 
         String[] args = command.split(" ");
         List<String> strings = Arrays.asList(args);
 
-        event.setCancelled(true);
+        if (strings.size() < 2) return;
 
-        strings.remove(0);
-
-        Player receiver = Bukkit.getPlayerExact(strings.get(0));
+        Player receiver = Bukkit.getPlayerExact(strings.get(1));
 
         if (receiver == null) {
             sender.sendMessage(mm.deserialize("<red>You must specify a player to send the message to!"));
@@ -46,9 +46,11 @@ public class MessageListener extends Listener {
             return;
         }
 
+        if (strings.size() < 3) return;
+
         messageManager.getLastMessaged().put(sender.getUniqueId(), receiver.getUniqueId());
 
-        strings.remove(0);
+        strings = strings.subList(2, strings.size() - 1);
 
         String message = String.join(" ", strings);
 
