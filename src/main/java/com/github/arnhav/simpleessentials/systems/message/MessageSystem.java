@@ -7,9 +7,10 @@ public class MessageSystem extends System {
     public void enable() {
         MessageManager messageManager = new MessageManager();
 
+        new MessageCommand("msg", messageManager);
         new ReplyCommand("r", messageManager);
 
-        new MessageListener(messageManager);
+//        new MessageListener(messageManager);
     }
 
     @Override
