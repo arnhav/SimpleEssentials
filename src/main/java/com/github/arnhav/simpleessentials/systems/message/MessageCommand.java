@@ -46,7 +46,7 @@ public class MessageCommand extends CommandExecutor {
         messageManager.getLastMessaged().put(player.getUniqueId(), receiver.getUniqueId());
 
         List<String> strings = Arrays.asList(args);
-        strings = strings.subList(1, strings.size() - 1);
+        strings = strings.subList(1, strings.size());
 
         String message = String.join(" ", strings);
 
